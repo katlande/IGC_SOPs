@@ -47,7 +47,6 @@ for(i in 1:length(input_paths)){
   DefaultAssay(obj) <- "RNA"
   obj <- NormalizeData(object = obj) # log normalize - creates RNA data slot
   obj <- SCTransform(obj, verbose = FALSE) # SCTransform - creates SCT assay
-  obj <- PrepSCTFindMarkers(obj) # PrepSCTFindMarkers ONCE - so you don't need to do this downstream
   
   # add a % mitochrondrial read column to the meta data, most commonly one of these two lines will work for mouse/human:
   # you may need to edit the syntax, "^mt-" searches for genes that start with "mt-" and defines them as mitochondrial reads.
