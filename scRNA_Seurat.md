@@ -43,8 +43,9 @@ for(i in 1:length(input_paths)){
   cnt <- Read10X(data.dir = input_paths[[i]])
   obj <- CreateSeuratObject(counts = cnt, project = names(input_paths)[i])
   
-  # logNormalize an SCtransform each sample individually before normalization and integration
-  # this is the basic architecture we
+  # logNormalize an SCtransform each sample individually before generating a combined object
+  # this is the basic architecture we need for bioTuring-ready objects
+  # you can also choose to hash this section out and normalize after filtering instead
   DefaultAssay(obj) <- "RNA"
   obj <- NormalizeData(object = obj) # log normalize - creates RNA data slot
   obj <- SCTransform(obj, verbose = FALSE) # SCTransform - creates SCT assay
