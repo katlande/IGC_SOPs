@@ -6,8 +6,9 @@ Kat Lande
 - [0 Load Packages and Data](#0-load-packages-and-data)
 - [1 Setup Individual Objects](#1-setup-individual-objects)
 - [2 Merging Samples](#1-merging-samples)
-  - [2.1 Simple Merging](#21-simple-merging)
-  - [2.2 Harmony Integration](#22-harmony-integration)
+  = [2.1 Filtering](#21-filtering)
+  - [2.2 Simple Merging](#22-simple-merging)
+  - [2.3 Harmony Integration](#23-harmony-integration)
 
 
 # 0 Load Packages
@@ -42,8 +43,8 @@ for(i in 1:length(input_paths)){
   cnt <- Read10X(data.dir = input_paths[[i]])
   obj <- CreateSeuratObject(counts = cnt, project = names(input_paths)[i])
   
-  # logNormalize an SCtransform each sample individually before integration
-  # this creates the basic architecture we need for bioTuring compatible objects
+  # logNormalize an SCtransform each sample individually before normalization and integration
+  # this is the basic architecture we
   DefaultAssay(obj) <- "RNA"
   obj <- NormalizeData(object = obj) # log normalize - creates RNA data slot
   obj <- SCTransform(obj, verbose = FALSE) # SCTransform - creates SCT assay
@@ -78,6 +79,8 @@ Idents(merged) <- "orig.ident"
 VlnPlot(merged, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3, pt.size = 0)
 ```
 
+## 2.1 Filtering
+Simple filtering:
 ```r
 # define QC cut-offs based on distributions, and filter low quality cells from the object e.g.,:
 subset(merged, subset = nFeature_RNA < 5000 &
@@ -87,7 +90,29 @@ subset(merged, subset = nFeature_RNA < 5000 &
          percent.mt < 5) -> filtered
 ```
 
-## 2.1 Simple Merging
+If a large proportion of your cells were removed via filtering, it may be worthwhile to filter the individual sample objects and re-normalize each one:
+```r
+# Check the % of cells retain in each sample:
+(table(filtered$orig.ident)/table(merged$orig.ident))*100
+
+# apply filtering and normalizations to each object:
+lapply(unfilt_obj_list, function(x){
+  subset(x, subset = nFeature_RNA < 5000 &
+         nFeature_RNA > 500 &
+         nCount_RNA < 25000 &
+         nCount_RNA > 750 &
+         percent.mt < 5) -> filtered
+  
+  DefaultAssay(x) <- "RNA"
+  x <- NormalizeData(object = x) # log normalize - creates RNA data slot
+  x <- SCTransform(x, verbose = FALSE) # SCTransform - creates SCT assay
+}) -> filt_obj_list
+
+filtered <- merge(filt_obj_list[[1]], filt_obj_list[2:length(filt_obj_list)])
+filtered <- PrepSCTFindMarkers(filtered) # PrepSCTFindMarkers ONCE - so you don't need to do this downstream
+```
+
+## 2.2 Simple Merging
 Cluster the filtered object on simple merging only using the SCT assay. Integration can over-correct data and remove real signatures. If simple merging alone is sufficient, it can be better to avoid integration all together.
 ```r
 DefaultAssay(filtered) <- "SCT"
@@ -102,15 +127,14 @@ DimPlot(filtered, split.by = "orig.ident") # look at the dimplot split out
 
 # optional: save the merged object
 # saveRDS(filtered, "/path/to/dir/SimpleMerge_Filtered.rds")
-
 ```
 
-## 2.2 Harmony Integration
+## 2.3 Harmony Integration
 If the samples don't overlap well using a simple merge, or the clusters look otherwise bad, you likely need to properly integrate your samples. Here we use a Harmony integration:
 ```r
 # these two steps were already run in the section above, 
 # but make sure to run them if you skipped the simple merge section:
-DefaultAssay(Object) <- "SCT"
+DefaultAssay(filtered) <- "SCT"
 filtered <- RunPCA(filtered, npcs = 30, features = rownames(filtered))
 # start here to integrate with harmony:
 harmony <- IntegrateLayers(object = filtered, method = 'HarmonyIntegration',
@@ -131,13 +155,3 @@ DimPlot(harmony, split.by = "orig.ident") # look at the dimplot split out
 ```
 
 Pick either the harmony or simple merge object for downstream analysis.
-
-
-
-
-
-
-
-
-
-
