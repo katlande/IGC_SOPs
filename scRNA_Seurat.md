@@ -6,7 +6,7 @@ Kat Lande
 - [0 Load Packages and Data](#0-load-packages-and-data)
 - [1 Setup Individual Objects](#1-setup-individual-objects)
 - [2 Merging Samples](#1-merging-samples)
-  = [2.1 Filtering](#21-filtering)
+  - [2.1 Filtering](#21-filtering)
   - [2.2 Simple Merging](#22-simple-merging)
   - [2.3 Harmony Integration](#23-harmony-integration)
 
