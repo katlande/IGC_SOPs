@@ -102,11 +102,12 @@ lapply(unfilt_obj_list, function(x){
          nFeature_RNA > 500 &
          nCount_RNA < 25000 &
          nCount_RNA > 750 &
-         percent.mt < 5) -> filtered
+         percent.mt < 5) -> f
   
-  DefaultAssay(x) <- "RNA"
-  x <- NormalizeData(object = x) # log normalize - creates RNA data slot
-  x <- SCTransform(x, verbose = FALSE) # SCTransform - creates SCT assay
+  DefaultAssay(f) <- "RNA"
+  f <- NormalizeData(object = f) # log normalize - creates RNA data slot
+  f <- SCTransform(f, verbose = FALSE) # SCTransform - creates SCT assay
+return(f)
 }) -> filt_obj_list
 
 filtered <- merge(filt_obj_list[[1]], filt_obj_list[2:length(filt_obj_list)])
