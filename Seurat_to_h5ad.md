@@ -12,13 +12,13 @@ library(SeuratDisk)
 Seurat <- readRDS("/path/to/example.rds")
 ```
 
-## Understanding the Main Components of h5ad Format
+## Understanding the Main Components of Single Cell h5ad Format
 
 Anndata objects contain very similar information as Seurat objects, but
 actually converting the **correct** layers of a Seurat object into
 Anndata can be a challenge.
 
-#### A minimal h5ad generally has this architecture:
+#### A minimal single cell h5ad generally has this architecture:
 
 ``` python
 # Openning and viewing an example AnnData object in python:
