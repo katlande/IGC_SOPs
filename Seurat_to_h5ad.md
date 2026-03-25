@@ -61,7 +61,7 @@ SeuratDisk’s *SaveH5Seurat()* and *Convert()* functions will by default
 use the DefaultAssay for adata.X. Within the DefaultAssay,
 *SaveH5Seurat()* will choose layers by their availability, ranking them
 as: **scale.data \> data \> counts.** *e.g., a scale.data layer will
-always supersede a data layer, unless the assay is missing the data
+always supersede a data layer, unless the assay is missing the scale.data
 layer.*
 
 To use the data layer of a specific assay that also contains a
