@@ -70,8 +70,8 @@ MarkerPlot(obj = merfish, # seurat object
            margin_factor = 0.75, # margin size; increase/decrease if there's too little/too much space for the annotations
            maxsize = 8)  # maximum size for dots
 ```
-
-<center><img src="image_assets/SeuratPlots_Images/unnamed-chunk-3-1.png" width="65%" /></center>
+<p align="center">
+<img src="image_assets/SeuratPlots_Images/unnamed-chunk-3-1.png" width="65%" /></p>
 
 MarkerPlots are grobs, and can be easily modified using ggplot2()
 parameters:
