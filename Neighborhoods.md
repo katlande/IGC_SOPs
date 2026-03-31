@@ -33,7 +33,7 @@ ImageDimPlot(merfish, fov = "Test_FOV", group.by = "RandomCells",
         legend.title=element_blank())+ggtitle("Random Seeds") 
 ```
 
-<img src="image_assets/Neighborhood_Images/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<p align="center"><img src="image_assets/Neighborhood_Images/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /></p>
 
 <h1 align="center">Identify Neighbors</h1>
 
@@ -55,7 +55,7 @@ ImageDimPlot(merfish, fov = "Test_FOV", group.by = "Status",
         legend.title=element_blank())+ggtitle("Random Seeds + 8 Neighbors") 
 ```
 
-<img src="image_assets/Neighborhood_Images/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<p align="center"><img src="image_assets/Neighborhood_Images/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /></p>
 
 <h1 align="center">Modulating Neighborhood Size</h1>
 
@@ -98,7 +98,7 @@ ImageDimPlot(merfish, fov = "Test_FOV", group.by = "Status_30",
 ggpubr::ggarrange(n8, n10, n15, n30, nrow=2, ncol=2, common.legend = T, legend="right")
 ```
 
-<img src="image_assets/Neighborhood_Images/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<p align="center"><img src="image_assets/Neighborhood_Images/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /></p>
 
 <h1 align="center">Checking Neighborhoods for Enrichment</h1>
 
@@ -157,5 +157,4 @@ ggplot(enrichDF2, aes(x=Split, y=Group, fill=enrichRatio))+
   ggtitle("Cell Type Enrichment in Neighborhoods by Group")+
   theme(plot.title=element_text(hjust=0.5, face="bold", size=12))
 ```
-
-<img src="image_assets/Neighborhood_Images/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+<p align="center"><img src="image_assets/Neighborhood_Images/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /></p>
