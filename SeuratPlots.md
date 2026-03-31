@@ -3,9 +3,7 @@ SeuratPlots
 Kathryn Lande
 2026-03-30
 
-<div align="center">
-# Load Libraries and Example Data
-</div>
+<h1 align="center">Load Libraries and Example Data</h1>
 
 ``` r
 # devtools::install_github("katlande/SeuratPlots") # If not already installed
