@@ -158,3 +158,5 @@ ggplot(enrichDF2, aes(x=Split, y=Group, fill=enrichRatio))+
   theme(plot.title=element_text(hjust=0.5, face="bold", size=12))
 ```
 <p align="center"><img src="image_assets/Neighborhood_Images/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /></p>
+
+Here we see that low quality and immune cells are significantly enriched in G2 neighborhoods, whereas low quality and non-immune cells are significantly depleted from G1 neighborhoods. This is a random example where a significant enrichment was found for demonstration purposes.
