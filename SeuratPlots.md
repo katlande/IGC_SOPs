@@ -20,7 +20,7 @@ Using a minimal MERFISH Seurat object with 1 FOV and 358 cells:
 
 ``` r
 # Read in the test data:
-merfish <- readRDS("MERFISH_Test_Area.RDS")
+merfish <- readRDS("http://github.com/katlande/IGC_SOPs/tree/main/rds_assets/MERFISH_Test_Area.RDS") # download path
 
 # check meta data:
 head(merfish@meta.data)
