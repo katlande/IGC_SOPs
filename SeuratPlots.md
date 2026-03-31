@@ -89,8 +89,8 @@ MarkerPlot(merfish, genesDF, margin_factor = 0.75, maxsize = 8)+
 
 <h1 align="center">Flexible Feature Plots</h1>
 
-Seurat’s basic ImageFeaturePlot() leaves a lot to be desired, especially
-when it comes to value scaling and implementing more complex
+Seurat’s basic ImageFeaturePlot() and ImageDimPlot() functions leave a lot to be desired, 
+especially when it comes to value scaling and implementing more complex
 visualizations. Here we show how to make a basic ImageFeaturePlot()
 using expression of Hnf4a, as well as more complex versions of the plot
 using multiple colour scales.
@@ -145,6 +145,10 @@ basic_plot + modified_plot
 <p align="center"><img src="image_assets/SeuratPlots_Images/unnamed-chunk-6-1.png" width="70%" /></p>
 
 <h3 align="center">Making Complex Feature Plots</h3>
+
+Note that here, we are plotting a continuous variable (like ImageFeaturePlot()), 
+but a discrete variable can also be plotting in the same way to mimic
+an ImageDimPlot().
 
 We can also overlay multiple images, for example if we only want to
 colour certain cell types and use different gradients:
@@ -234,3 +238,7 @@ ggarrange(overlay_2, legend_stack2, align="hv", nrow=2, ncol=1, heights=c(1, 0.2
 ```
 
 <p align="center"><img src="image_assets/SeuratPlots_Images/unnamed-chunk-10-1.png" width="50%" /></p>
+
+There are many ways to overlay plot layers, including
+using continuous variables for some layers and discrete
+variables for others.
