@@ -41,7 +41,7 @@ head(merfish@meta.data)
     ## 4492993500033100269     Low Quality
     ## 4492993500033100294 Non-Immune Cell
 
-# Marker Plots
+<h1 align="center">Marker Plots</h1>
 
 To help ID cell types, we can use the MarkerPlot() function, which is a
 more flexible version of Seurat’s DotPlot() with annotation and
@@ -85,9 +85,9 @@ MarkerPlot(merfish, genesDF, margin_factor = 0.75, maxsize = 8)+
   scale_colour_viridis_c() # change the colour scale
 ```
 
-<center><img src="image_assets/SeuratPlots_Images/unnamed-chunk-4-1.png" width="65%" /></center>
+<p align="center"><img src="image_assets/SeuratPlots_Images/unnamed-chunk-4-1.png" width="65%" /></p>
 
-# Flexible Feature Plots
+<h1 align="center">Flexible Feature Plots</h1>
 
 Seurat’s basic ImageFeaturePlot() leaves a lot to be desired, especially
 when it comes to value scaling and implementing more complex
@@ -142,9 +142,9 @@ modified_plot <-
 basic_plot + modified_plot
 ```
 
-<center><img src="image_assets/SeuratPlots_Images/unnamed-chunk-6-1.png" width="70%" /></center>
+<p align="center"><img src="image_assets/SeuratPlots_Images/unnamed-chunk-6-1.png" width="70%" /></p>
 
-### Making Complex Feature Plots
+<h3 align="center">Making Complex Feature Plots</h3>
 
 We can also overlay multiple images, for example if we only want to
 colour certain cell types and use different gradients:
@@ -171,7 +171,7 @@ plot3 <- PlotPolygons(subset(poly,! MajorCellType  %in% c("Non-Immune Cell", "Im
 plot1 + plot2+ plot3
 ```
 
-<center><img src="image_assets/SeuratPlots_Images/unnamed-chunk-7-1.png" width="90%" /></center>
+<p align="center"><img src="image_assets/SeuratPlots_Images/unnamed-chunk-7-1.png" width="90%" /></p>
 
 To make out complex plot, we need to stack these three plots on top of
 each other.
@@ -191,7 +191,7 @@ prepStack(plot3, poly, first=T)+
 overlay
 ```
 
-<center><img src="image_assets/SeuratPlots_Images/unnamed-chunk-8-1.png" width="50%" /></center>
+<p align="center"><img src="image_assets/SeuratPlots_Images/unnamed-chunk-8-1.png" width="50%" /></p>
 
 Add the immune and non-immune legends back in as separate grobs:
 
@@ -204,9 +204,9 @@ legend_stack <- ggarrange(collectLegend(plot1),
 ggarrange(overlay, legend_stack, align="hv", nrow=1, ncol=2, widths=c(1, 0.25))
 ```
 
-<center><img src="image_assets/SeuratPlots_Images/unnamed-chunk-9-1.png" width="50%" /></center>
+<p align="center"><img src="image_assets/SeuratPlots_Images/unnamed-chunk-9-1.png" width="50%" /></p>
 
-## Changing legend positions
+<h4 align="center">Changing Legend Positions</h4>
 
 You can also add you legends below the overlay with some small
 modifications:
@@ -233,4 +233,4 @@ legend_stack2 <- ggarrange(collectLegend(plot1b),
 ggarrange(overlay_2, legend_stack2, align="hv", nrow=2, ncol=1, heights=c(1, 0.25))
 ```
 
-<center><img src="image_assets/SeuratPlots_Images/unnamed-chunk-10-1.png" width="50%" /></center>
+<p align="center"><img src="image_assets/SeuratPlots_Images/unnamed-chunk-10-1.png" width="50%" /></p>
