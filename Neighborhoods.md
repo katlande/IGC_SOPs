@@ -1,4 +1,4 @@
-Finding Neighbors in Spatial Datasets
+<h1 align="center">Finding Neighbors in Spatial Datasets</h1>
 ================
 Kathryn Lande
 2026-03-31
