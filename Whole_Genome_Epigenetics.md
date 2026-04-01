@@ -265,4 +265,4 @@ multiple_metagenes(data_list = list(metagene_avg, metagene_yng9, metagene_old8),
                    yaxis = "ATAC-CPM")
 ```
 
-<img src="image_assets/ATAC_Metagene.png" style="display: block; margin: auto;" />
+<p align="center"><img src="image_assets/ATAC_Metagene.png" style="display: block; margin: auto;" /></p>
