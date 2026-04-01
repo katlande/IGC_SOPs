@@ -236,7 +236,7 @@ peaks:
 
 ``` r
 # Read in ATAC peak regions:
-known_peaks <- read.delim("../PO1/ATAC_Jan2023/DiffPeaks_old_FC1.5.bed", header=F)
+known_peaks <- read.delim("/path/to/some/DiffPeaks_old.bed", header=F)
 known_peaks$V1 <- gsub("chr", "", known_peaks$V1) # remove "chr" to match formatting of dicts
 known_peaks <- known_peaks[known_peaks$V1 %in% c(1:19,"X","Y"),] # remove filtered chromosomes -- including them will cause errors
 head(known_peaks[1:3])
