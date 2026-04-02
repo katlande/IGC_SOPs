@@ -13,3 +13,6 @@
 
 ### Epigenomics
 * [Memory Efficient Epigenomics in R](https://github.com/katlande/IGC_SOPs/blob/main/Whole_Genome_Epigenetics.md)
+
+### RNAseq
+* [Looking at RNAseq Splice Junctions](https://github.com/katlande/IGC_SOPs/blob/main/RNAseq_Junctions.md)
