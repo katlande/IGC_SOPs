@@ -86,7 +86,7 @@ wget https://raw.githubusercontent.com/guigolab/ggsashimi/master/ggsashimi.py
 python ggsashimi.py \
   -b test2.bam \ # input bam file
   -c 5:2919827-2928480 \ # location of interest
-  -g /gpfs/genomes/TAIR10/Arabidopsis_thaliana.TAIR10.34.gtf # GTF containing transcript versions
+  -g /path/to/TAIR10.gtf # GTF containing transcript versions
 ```
 
 <p align="center"><img src="image_assets/SingleSampleSashimi.png" style="display: block; margin: auto;" /></p>
@@ -106,7 +106,7 @@ python ggsashimi.py \
   -P plaintext_assets/colours.txt \ # newline-delimited txt file with colours to use
   --alpha 0.5 \ # alpha value for overlay
   -A mean \ # takes the mean n junctions for each group
-  -g /gpfs/genomes/TAIR10/Arabidopsis_thaliana.TAIR10.34.gtf
+  -g /path/to/TAIR10.gtf
 ```
 
 <p align="center"><img src="image_assets/GroupedSashimi.png" style="display: block; margin: auto;" /></p>
@@ -131,7 +131,7 @@ python ggsashimi.py \
   -O 3 \ # overlay all samples by factor in the third column of bams.tsv
   -P plaintext_assets/colours.txt \ # newline-delimited txt file with colours to use
   --alpha 0.5 \ # alpha value for overlay
-  -g /gpfs/genomes/TAIR10/Arabidopsis_thaliana.TAIR10.34.gtf
+  -g /path/to/TAIR10.gtf
 ```
 
 <p align="center"><img src="image_assets/GroupedSashimi.png" style="display: block; margin: auto;" /></p>
