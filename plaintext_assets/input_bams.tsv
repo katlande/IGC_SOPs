@@ -1,0 +1,4 @@
+sample1	SampleTRT1.bam	TRT
+sample2	SampleTRT2.bam	TRT
+sample3	SampleCTL1.bam	CTL
+sample4	SampleCTL2.bam	CTL
