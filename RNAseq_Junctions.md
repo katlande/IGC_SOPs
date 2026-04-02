@@ -134,7 +134,7 @@ python ggsashimi.py \
   -g /path/to/TAIR10.gtf
 ```
 
-<p align="center"><img src="image_assets/GroupedSashimi.png" style="display: block; margin: auto;" /></p>
+<p align="center"><img src="image_assets/GroupedSashimi2.png" style="display: block; margin: auto;" /></p>
 
 Now, we can see some evidence of exon 7 inclusion in the CTL and no
 evidence of skipped junctions. However, we only have a very small total
