@@ -205,10 +205,53 @@ ggarrange(plot_noDist,plot_40,plot_20,plot_5, nrow=1, ncol=4, align="hv", common
 
 <p align="center"><img src="image_assets/Neighborhood_Images/Explicit_Distances.png" style="display: block; margin: auto;" /></p>
 
+<h4 align="center">Sparse FOV Example</h4>
 
+We can see an example of where setting a maximum distance might matter if we remove low quality cells from our object.
 
+```r
+# Remove low quality cells from the merfish object
+filtered <- subset(merfish, MajorCellType != "Low Quality")
 
+# Choose another random cell to set as the seed:
+filtered$RandomCell_1 <- ifelse(1:ncol(filtered) %in% sample(1:ncol(filtered), 1), TRUE, FALSE)
 
+# No maximum distance:
+filtered <- findNeighbors(filtered, seed.col="RandomCell_1", nNeigh = 30, neighborCol = "N_noDist")
+filtered$N_noDist <- ifelse(filtered$RandomCell_1, "Seed", ifelse(filtered$N_noDist, "Neighbor", "Background"))
+# 40 uM maximum distance:
+filtered <- findNeighbors(filtered, seed.col="RandomCell_1", nNeigh = 30, neighborCol = "N_40", max.dist = 40)
+filtered$N_40 <- ifelse(filtered$RandomCell_1, "Seed", ifelse(filtered$N_40, "Neighbor", "Background"))
+
+# make polygons:
+coordDF_filt <- getPolygons(filtered, "Test_FOV")
+
+plot1 <-
+  PlotPolygons(coordDF_1, fillVar = "MajorCellType", legend.name = "CellType", fillColor = brewer.pal(3, "YlGnBu"))+
+  theme(plot.title = element_text(hjust=0.5, face="bold"))+
+  ggtitle("Unfiltered\nMajor Cell Type")
+
+plot2 <-
+  PlotPolygons(coordDF_filt, fillVar = "N_noDist", legend.name = "Status")+
+  theme(plot.title = element_text(hjust=0.5, face="bold"))+
+  ggtitle("Quality Filtered\nNo Maximum")
+
+plot3 <-
+  PlotPolygons(coordDF_filt, fillVar = "N_40", legend.name = "Status")+
+  theme(plot.title = element_text(hjust=0.5, face="bold"))+
+  ggtitle("Quality Filtered\n<40uM")
+
+# Show plots:
+legends <- ggarrange(SeuratPlots::collectLegend(plot1), SeuratPlots::collectLegend(plot2), nrow=1, ncol=2, align="h")
+plots <- ggarrange(plot1, plot2, plot3, nrow=1, ncol=3, align="hv", common.legend = T, legend="none")
+ggarrange(plots,legends,ncol=1,heights=c(1,0.3))
+
+```
+
+<p align="center"><img src="image_assets/Neighborhood_Images/plot_zoom_png.png" style="display: block; margin: auto;" /></p>
+
+Here we see that our seed cell is in the center of an area where most of its neighbors have been filtered out. As a result, 
+many of its KNN-called neighbors are actually quite far away, and setting a maximum distance is important to reduce artifacts.
 
 
 
