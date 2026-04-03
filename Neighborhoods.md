@@ -187,7 +187,7 @@ merfish <- findNeighbors(merfish, seed.col="RandomCell_1", nNeigh = 30, neighbor
 merfish$N_5 <- ifelse(merfish$RandomCell_1, "Seed", ifelse(merfish$N_5, "Neighbor", "Background"))
 
 # plot with ImageDims with SeuratPlots:
-coordDF_1 <- SeuratPlots::getPolygons(merfish, "Test_FOV")
+coordDF_1 <- getPolygons(merfish, "Test_FOV")
 
 # draw all plots:
 plot_noDist <- PlotPolygons(coordDF_1, fillVar = "N_noDist", legend.name = "Status")+
