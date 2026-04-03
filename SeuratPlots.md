@@ -101,7 +101,7 @@ merfish$Coverage <- ifelse(merfish$nCount_RNA >= 50, "High Coverage", "Low Cover
 CellFraction(merfish, group.by = "MajorCellType", split.by = "Coverage", colors=brewer.pal(3, "YlGnBu"))+
   labs(subtitle="Cell Type by Coverage Group")
 ```
-<p align="center"><img src="image_assets/SeuratPlots_Images/CellFraction.png" width="50%" /></p>
+<p align="center"><img src="image_assets/SeuratPlots_Images/CellFractions.png" width="50%" /></p>
 
 We can also get the cell fractions as a data.frame:
 
