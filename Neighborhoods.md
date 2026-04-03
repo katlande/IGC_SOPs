@@ -193,11 +193,11 @@ coordDF_1 <- SeuratPlots::getPolygons(merfish, "Test_FOV")
 plot_noDist <- PlotPolygons(coordDF_1, fillVar = "N_noDist", legend.name = "Status")+
   theme(plot.title = element_text(hjust=0.5, face="bold"))+ggtitle("No Maximum")
 plot_40 <- PlotPolygons(coordDF_1, fillVar = "N_40", legend.name = "Status")+
-  theme(plot.title = element_text(hjust=0.5, face="bold"))+ggtitle(">40uM")
+  theme(plot.title = element_text(hjust=0.5, face="bold"))+ggtitle("<40uM")
 plot_20 <- PlotPolygons(coordDF_1, fillVar = "N_20", legend.name = "Status")+
-  theme(plot.title = element_text(hjust=0.5, face="bold"))+ggtitle(">20uM")
+  theme(plot.title = element_text(hjust=0.5, face="bold"))+ggtitle("<20uM")
 plot_5 <- PlotPolygons(coordDF_1, fillVar = "N_5", legend.name = "Status")+
-  theme(plot.title = element_text(hjust=0.5, face="bold"))+ggtitle(">5uM")
+  theme(plot.title = element_text(hjust=0.5, face="bold"))+ggtitle("<5uM")
 
 ggarrange(plot_noDist,plot_40,plot_20,plot_5, nrow=1, ncol=4, align="hv", common.legend = T, legend="right")
 
