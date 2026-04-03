@@ -87,6 +87,37 @@ MarkerPlot(merfish, genesDF, margin_factor = 0.75, maxsize = 8)+
 
 <p align="center"><img src="image_assets/SeuratPlots_Images/unnamed-chunk-4-1.png" width="65%" /></p>
 
+
+<h1 align="center">Cell Fraction Plots</h1>
+
+Often, we wish to see the cell type fractions of all samples or conditions. With SeuratPlots, we can do this simply by 
+defining a "split" variable (e.g., group or condition) and a "group" variable (e.g., cell type).
+
+``` r
+# Add a column that defines whether cells are high or low read depth:
+merfish$Coverage <- ifelse(merfish$nCount_RNA >= 50, "High Coverage", "Low Coverage")
+
+# Plot the cell fractions:
+CellFraction(merfish, group.by = "MajorCellType", split.by = "Coverage", colors=brewer.pal(3, "YlGnBu"))+
+  labs(subtitle="Cell Type by Coverage Group")
+```
+<p align="center"><img src="image_assets/SeuratPlots_Images/CellFraction.png" width="50%" /></p>
+
+We can also get the cell fractions as a data.frame:
+
+``` r
+summary.df <- CellFraction(merfish, group.by = "MajorCellType", split.by = "Coverage", return.data = T)
+head(summary.df)
+```
+
+    ##     SPLITBYVAR    GROUPBYVAR      total_cells_in_split total_cells_in_group
+    ## 1 High Coverage Immune Cell                       65                   10
+    ## 2 High Coverage Non-Immune Cell                   65                   55
+    ## 3 Low Coverage  Immune Cell                      293                   58
+    ## 4 Low Coverage  Low Quality                      293                  149
+    ## 5 Low Coverage  Non-Immune Cell                  293                   86
+
+
 <h1 align="center">Flexible Feature Plots</h1>
 
 Seurat’s basic ImageFeaturePlot() and ImageDimPlot() functions leave a lot to be desired, 
