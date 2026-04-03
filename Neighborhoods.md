@@ -9,6 +9,7 @@ Kathryn Lande
 library(Seurat)
 library(SeuratPlots)
 library(ggplot2)
+library(ggpubr)
 
 # A small merfish example:
 merfish <- readRDS("http://github.com/katlande/IGC_SOPs/tree/main/rds_assets/MERFISH_Test_Area.RDS") # download path
@@ -160,3 +161,54 @@ ggplot(enrichDF2, aes(x=Split, y=Group, fill=enrichRatio))+
 <p align="center"><img src="image_assets/Neighborhood_Images/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /></p>
 
 Here we see that low quality and immune cells are significantly enriched in G2 neighborhoods, whereas low quality and non-immune cells are significantly depleted from G1 neighborhoods. This is a random example where a significant enrichment was found for demonstration purposes.
+
+
+<h3 align="center">Setting a Maximum Distance</h3>
+
+In some tissues or experiments, exclusively using KNN to define neighborhoods may yeild very distant cells being called as neighbors. For example, in sparse tissues where a neighbor cell may be very far away, or in highly filtered tissues where many true cells are actually missing. In this case, we can explicitly set the maximum distance a cell can be from a seed before it is no longer considered a neighbor. This value will be based on whatever unit the coordinate system is based in (e.g., uM in MERFISH, px in CosMx, etc).
+
+Here we see an example of KNN=30 around a singular seed cell, with maximum distances set to 40um, 20um, and 5um respectively:
+
+```r
+# New seed column with a single random seed:
+merfish$RandomCell_1 <- ifelse(1:ncol(merfish) %in% sample(1:ncol(merfish), 1), TRUE, FALSE)
+
+# no limit example:
+merfish <- findNeighbors(merfish, seed.col="RandomCell_1", nNeigh = 30, neighborCol = "N_noDist")
+merfish$N_noDist <- ifelse(merfish$RandomCell_1, "Seed", ifelse(merfish$N_noDist, "Neighbor", "Background"))
+# max dist 40uM:
+merfish <- findNeighbors(merfish, seed.col="RandomCell_1", nNeigh = 30, neighborCol = "N_40", max.dist = 40) 
+merfish$N_40 <- ifelse(merfish$RandomCell_1, "Seed", ifelse(merfish$N_40, "Neighbor", "Background"))
+# max dist 20uM:
+merfish <- findNeighbors(merfish, seed.col="RandomCell_1", nNeigh = 30, neighborCol = "N_20", max.dist = 20) 
+merfish$N_20 <- ifelse(merfish$RandomCell_1, "Seed", ifelse(merfish$N_20, "Neighbor", "Background"))
+# max dist 5uM:
+merfish <- findNeighbors(merfish, seed.col="RandomCell_1", nNeigh = 30, neighborCol = "N_5", max.dist = 5) 
+merfish$N_5 <- ifelse(merfish$RandomCell_1, "Seed", ifelse(merfish$N_5, "Neighbor", "Background"))
+
+# plot with ImageDims with SeuratPlots:
+coordDF_1 <- SeuratPlots::getPolygons(merfish, "Test_FOV")
+
+# draw all plots:
+plot_noDist <- PlotPolygons(coordDF_1, fillVar = "N_noDist", legend.name = "Status")+
+  theme(plot.title = element_text(hjust=0.5, face="bold"))+ggtitle("No Maximum")
+plot_40 <- PlotPolygons(coordDF_1, fillVar = "N_40", legend.name = "Status")+
+  theme(plot.title = element_text(hjust=0.5, face="bold"))+ggtitle(">40uM")
+plot_20 <- PlotPolygons(coordDF_1, fillVar = "N_20", legend.name = "Status")+
+  theme(plot.title = element_text(hjust=0.5, face="bold"))+ggtitle(">20uM")
+plot_5 <- PlotPolygons(coordDF_1, fillVar = "N_5", legend.name = "Status")+
+  theme(plot.title = element_text(hjust=0.5, face="bold"))+ggtitle(">5uM")
+
+ggarrange(plot_noDist,plot_40,plot_20,plot_5, nrow=1, ncol=4, align="hv", common.legend = T, legend="right")
+
+```
+
+<p align="center"><img src="image_assets/Neighborhood_Images/Explicit_Distances.png" style="display: block; margin: auto;" /></p>
+
+
+
+
+
+
+
+
