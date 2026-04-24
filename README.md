@@ -16,3 +16,4 @@
 
 ### RNAseq
 * [Looking at RNAseq Splice Junctions](https://github.com/katlande/IGC_SOPs/blob/main/RNAseq_Junctions.md)
+* [RNAseq Differential Expression and Other Basics](https://github.com/katlande/RNAseq_Functions/blob/main/RNAseq_Tutorial.md)
