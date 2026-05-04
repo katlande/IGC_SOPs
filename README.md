@@ -10,6 +10,7 @@
 * [Select Regions in QuPath for MERFISH Experiments](https://github.com/katlande/IGC_SOPs/blob/main/QupathAnnotations.md)
 * [Using Custom Seurat Plotting Functions](https://github.com/katlande/IGC_SOPs/blob/main/SeuratPlots.md)
 * [Neighborhood analysis on Spatial Experiments](https://github.com/katlande/IGC_SOPs/blob/main/Neighborhoods.md)
+* [Parse-seq Alignment and Setup](https://github.com/katlande/IGC_SOPs/blob/main/Parseseq_SOP.md)
 
 ### Epigenomics
 * [Memory Efficient Epigenomics in R](https://github.com/katlande/IGC_SOPs/blob/main/Whole_Genome_Epigenetics.md)
