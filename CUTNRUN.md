@@ -49,7 +49,7 @@ Run the pipeline on barrel with standard settings:
 
 ## Get FRIPs
 
-Currently, this pipeline will still fail on some of the final steps, and it will not generate FRiPs as it is supposed to.
+In CPM-normalization mode, for whatever reason, FRiPs are not calculated by the pipeline. So we can calculate them manually now.
 
 To call FRiPs manually, you can use
 */vast/igc/analyses/kat/Kat_Files/readFracs.sh*, which calls FRiPs
