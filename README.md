@@ -14,6 +14,7 @@
 
 ### Epigenomics
 * [Memory Efficient Epigenomics in R](https://github.com/katlande/IGC_SOPs/blob/main/Whole_Genome_Epigenetics.md)
+* [CUT&RUN nf-core Without Version Conflicts]("https://github.com/katlande/IGC_SOPs/blob/main/CUTNRUN.md")
 
 ### RNAseq
 * [Looking at RNAseq Splice Junctions](https://github.com/katlande/IGC_SOPs/blob/main/RNAseq_Junctions.md)
