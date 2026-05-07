@@ -19,3 +19,7 @@
 ### RNAseq
 * [Looking at RNAseq Splice Junctions](https://github.com/katlande/IGC_SOPs/blob/main/RNAseq_Junctions.md)
 * [RNAseq Differential Expression and Other Basics](https://github.com/katlande/RNAseq_Functions/blob/main/RNAseq_Tutorial.md)
+
+## Other Useful Public Resources
+* [GEO Metadata Viewer App](https://snijesh.shinyapps.io/geo_shiny_app/)
+* [Human & Mouse Liver Cell Atlas](https://www.livercellatlas.org/index.php)
