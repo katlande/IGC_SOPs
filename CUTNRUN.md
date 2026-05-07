@@ -43,10 +43,13 @@ Run the pipeline on barrel with standard settings:
   --skip_fastqc true \
   --skip_igv true \
   --normalisation_mode CPM \
+  --dt_calc_all_matrix false \ # Note: this is an untested setting, but it should prevent pipeline errors caused by NFCORE_CUTANDRUN:CUTANDRUN:DEEPTOOLS_PLOTHEATMAP_GENE_ALL
   --peakcaller macs2
 ```
 
 ## Get FRIPs
+
+Currently, this pipeline will still fail on some of the final steps, and it will not generate FRiPs as it is supposed to.
 
 To call FRiPs manually, you can use
 */vast/igc/analyses/kat/Kat_Files/readFracs.sh*, which calls FRiPs
