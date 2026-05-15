@@ -278,7 +278,7 @@ makeTrack(DictList=dictList,
           rel=2)# relative height of peak track window to annotation track (i.e., 2:1)
 ```
 
-![](image_assets/MakePeakTracks_images/unnamed-chunk-7-1.png)<!-- -->
+<p align="center"><img src="image_assets/MakePeakTracks_images/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /></p>
 
 <h3 align="center">Define colouration by a meta data variable</h3>
 
@@ -296,7 +296,8 @@ makeTrack(DictList=dictList,
           cols=c("grey", "skyblue")) # optional custom colour specification
 ```
 
-![](image_assets/MakePeakTracks_images/unnamed-chunk-8-1.png)<!-- -->
+<p align="center"><img src="image_assets/MakePeakTracks_images/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /></p>
+
 
 <h3 align="center">Highlight Specific loci</h3>
 
@@ -315,5 +316,5 @@ makeTrack(DictList=dictList,
           cols=c("grey", "skyblue"),
           annotation_bed = annots)
 ```
+<p align="center"><img src="image_assets/MakePeakTracks_images/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /></p>
 
-![](image_assets/MakePeakTracks_images/unnamed-chunk-9-1.png)<!-- -->
