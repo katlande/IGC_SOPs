@@ -33,6 +33,7 @@ library(ggplot2)
 library(ggpubr)
 library(dplyr)
 library(PCBS)
+library(data.table)
 
 # Read in your bed file:
 bed <- read.delim("Summary.bed")
