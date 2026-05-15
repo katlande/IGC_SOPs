@@ -45,6 +45,7 @@ colnames(bed)[1:2] <- c("chr", "pos")
 bed <- bed[-c(3)] # remove "end" position column
 # normalize each sample by coverage:
 bed[3:8] <- apply(bed[3:8], 2, function(x){(as.numeric(x)/sum(as.numeric(x)))*1e06}) 
+# NOTE: you can also normalize these values against the total read depth of the bam files to get the true CPMs. Since these are just summing the nReads/bin, the value returned is not exactly CPM but rather a less coherent but analagous value.
 ```
 
 To convert the BED data to an indexed chromDict, use the modified
