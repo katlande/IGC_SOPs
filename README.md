@@ -13,9 +13,16 @@
 * [Parse-seq Alignment and Setup](https://github.com/katlande/IGC_SOPs/blob/main/Parseseq_SOP.md)
 
 ### Epigenomics
-* [Memory Efficient Epigenomics in R](https://github.com/katlande/IGC_SOPs/blob/main/Whole_Genome_Epigenetics.md)
+* [Epigenomic Visualizations with chromDicts](https://github.com/katlande/chromDicts/blob/main/vignette.md)
+    * ^ This is a packaged version of visualizations from:
+    * [Memory Efficient Peak Tracks in ggplot](https://github.com/katlande/IGC_SOPs/blob/main/MakePeakTracks.md)
+    * [Memory Efficient Epigenomics in R](https://github.com/katlande/IGC_SOPs/blob/main/Whole_Genome_Epigenetics.md)
 * [CUT&RUN nf-core Without Version Conflicts](https://github.com/katlande/IGC_SOPs/blob/main/CUTNRUN.md)
-* [Memory Efficient Peak Tracks in ggplot](https://github.com/katlande/IGC_SOPs/blob/main/MakePeakTracks.md)
+
+
+
+
+
 
 ### RNAseq
 * [Looking at RNAseq Splice Junctions](https://github.com/katlande/IGC_SOPs/blob/main/RNAseq_Junctions.md)
