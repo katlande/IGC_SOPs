@@ -14,9 +14,9 @@
 
 ### Epigenomics
 * [Epigenomic Visualizations with chromDicts](https://github.com/katlande/chromDicts/blob/main/vignette.md)
-    * ^ This is a packaged version of visualizations from:
-    * [Memory Efficient Peak Tracks in ggplot](https://github.com/katlande/IGC_SOPs/blob/main/MakePeakTracks.md)
-    * [Memory Efficient Epigenomics in R](https://github.com/katlande/IGC_SOPs/blob/main/Whole_Genome_Epigenetics.md)
+* [Create chromDicts with Nextflow](https://github.com/katlande/MakeChromDicts/blob/main/README.md)
+* [Memory Efficient Peak Tracks in ggplot](https://github.com/katlande/IGC_SOPs/blob/main/MakePeakTracks.md) *Works but methods are depreciated by above*
+* [Memory Efficient Epigenomics in R](https://github.com/katlande/IGC_SOPs/blob/main/Whole_Genome_Epigenetics.md) *Works but methods are depreciated by above*
 * [CUT&RUN nf-core Without Version Conflicts](https://github.com/katlande/IGC_SOPs/blob/main/CUTNRUN.md)
 
 
